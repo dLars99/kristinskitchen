@@ -43,7 +43,7 @@ CREATE TABLE [IngredientsDB] (
   [Brand] nvarchar(255),
   [Variety] nvarchar(255),
   [CategoryId] integer NOT NULL,
-  [Quantity] integer NOT NULL,
+  [Quantity] decimal NOT NULL,
   [QuantityUnit] nvarchar(20) NOT NULL,
   [ContainerType] nvarchar(255),
   [PantryShelfLife] integer NOT NULL,
