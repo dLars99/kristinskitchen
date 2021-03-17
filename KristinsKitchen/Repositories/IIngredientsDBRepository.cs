@@ -5,6 +5,8 @@ namespace KristinsKitchen.Repositories
 {
     public interface IIngredientsDBRepository
     {
-        List<IngredientsDB> GetAllIngredients();
+        List<IngredientsDB> GetAll();
+        IngredientsDB GetById(int id);
+        void Add(IngredientsDB ingredient);
     }
 }
