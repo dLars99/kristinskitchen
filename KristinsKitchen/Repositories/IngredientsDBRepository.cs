@@ -41,14 +41,14 @@ namespace KristinsKitchen.Repositories
                         ingredientList.Add(new IngredientsDB()
                         {
                             Id = DbUtils.GetInt(reader, "IngredientsId"),
-                            Description = DbUtils.GetString(reader, "Description"),
+                            Description = DbUtils.GetString(reader, "IngredientsDescription"),
                             Brand = DbUtils.GetString(reader, "Brand"),
                             Variety = DbUtils.GetString(reader, "Variety"),
                             CategoryId = DbUtils.GetInt(reader, "CategoryId"),
                             Category = new Category()
                             {
                                 Id = DbUtils.GetInt(reader, "CategoryId"),
-                                CategoryName = DbUtils.GetString(reader, "CategoryString")
+                                CategoryName = DbUtils.GetString(reader, "CategoryName")
                             },
                             Quantity = DbUtils.GetDec(reader, "Quantity"),
                             QuantityUnit = DbUtils.GetString(reader, "QuantityUnit"),
