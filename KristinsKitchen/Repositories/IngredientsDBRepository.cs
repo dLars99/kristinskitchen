@@ -163,7 +163,7 @@ namespace KristinsKitchen.Repositories
                                                CategoryId = @CategoryId,
                                                Quantity = @Quantity,
                                                QuantityUnit = @QuantityUnit,
-                                               ContainerTye = @ContainerTye,
+                                               ContainerType = @ContainerType,
                                                PantryShelfLife = @PantryShelfLife,
                                                FridgeShelfLife = @FridgeShelfLife,
                                                FreezerShelfLife = @FreezerShelfLife,
@@ -176,7 +176,7 @@ namespace KristinsKitchen.Repositories
                     DbUtils.AddParameter(cmd, "@CategoryId", ingredient.CategoryId);
                     DbUtils.AddParameter(cmd, "@Quantity", ingredient.Quantity);
                     DbUtils.AddParameter(cmd, "@QuantityUnit", ingredient.QuantityUnit);
-                    DbUtils.AddParameter(cmd, "@ContainerTye", ingredient.ContainerTye);
+                    DbUtils.AddParameter(cmd, "@ContainerType", ingredient.ContainerType);
                     DbUtils.AddParameter(cmd, "@PantryShelfLife", ingredient.PantryShelfLife);
                     DbUtils.AddParameter(cmd, "@FridgeShelfLife", ingredient.FridgeShelfLife);
                     DbUtils.AddParameter(cmd, "@FreezerShelfLife", ingredient.FreezerShelfLife);
