@@ -8,5 +8,6 @@ namespace KristinsKitchen.Repositories
         List<IngredientsDB> GetAll();
         IngredientsDB GetById(int id);
         void Add(IngredientsDB ingredient);
+        void Update(IngredientsDB ingredient);
     }
 }

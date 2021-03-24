@@ -148,6 +148,44 @@ namespace KristinsKitchen.Repositories
             }
         }
 
+        public void Update(IngredientsDB ingredient)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
 
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE IngredientsDB 
+                                           SET Description = @Description,
+                                               Brand = @Brand,
+                                               Variety = @Variety,
+                                               CategoryId = @CategoryId,
+                                               Quantity = @Quantity,
+                                               QuantityUnit = @QuantityUnit,
+                                               ContainerTye = @ContainerTye,
+                                               PantryShelfLife = @PantryShelfLife,
+                                               FridgeShelfLife = @FridgeShelfLife,
+                                               FreezerShelfLife = @FreezerShelfLife,
+                                               ImageLocation = @ImageLocation
+                                         WHERE Id = @Id;";
+
+                    DbUtils.AddParameter(cmd, "@Description", ingredient.Description);
+                    DbUtils.AddParameter(cmd, "@Brand", ingredient.Brand);
+                    DbUtils.AddParameter(cmd, "@Variety", ingredient.Variety);
+                    DbUtils.AddParameter(cmd, "@CategoryId", ingredient.CategoryId);
+                    DbUtils.AddParameter(cmd, "@Quantity", ingredient.Quantity);
+                    DbUtils.AddParameter(cmd, "@QuantityUnit", ingredient.QuantityUnit);
+                    DbUtils.AddParameter(cmd, "@ContainerTye", ingredient.ContainerTye);
+                    DbUtils.AddParameter(cmd, "@PantryShelfLife", ingredient.PantryShelfLife);
+                    DbUtils.AddParameter(cmd, "@FridgeShelfLife", ingredient.FridgeShelfLife);
+                    DbUtils.AddParameter(cmd, "@FreezerShelfLife", ingredient.FreezerShelfLife);
+                    DbUtils.AddParameter(cmd, "@ImageLocation", ingredient.ImageLocation);
+                    DbUtils.AddParameter(cmd, "@Id", ingredient.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

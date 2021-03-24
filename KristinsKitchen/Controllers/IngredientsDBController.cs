@@ -25,6 +25,7 @@ namespace KristinsKitchen.Controllers
         {
             return Ok(_ingredientsDBRepository.GetAll());
         }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -35,20 +36,14 @@ namespace KristinsKitchen.Controllers
             }
             return Ok(ingredient);
         }
+
         [HttpPost]
         public IActionResult Post(IngredientsDB ingredient)
         {
-            if (ingredient.PantryShelfLife <= -1 && ingredient.FridgeShelfLife <= -1 && ingredient.FreezerShelfLife <= -1)
+            var validationError = ValidateIngredient(ingredient);
+            if (!String.IsNullOrEmpty(validationError))
             {
-                return BadRequest("Cannot add ingredient to database without an expiration date in at least one storage location.");
-            }
-            if (ingredient.CategoryId < 1 || ingredient.CategoryId > 3)
-            {
-                return BadRequest("Cannot add ingredient to database without a valid category.");
-            }
-            if (ingredient.Quantity < 0)
-            {
-                return BadRequest("Default ingredient quantity cannot be negative.");
+                return BadRequest(validationError);
             }
 
             try
@@ -60,6 +55,44 @@ namespace KristinsKitchen.Controllers
             {
                 return StatusCode(500, "There was a problem saving this ingredient.");
             }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, IngredientsDB ingredient)
+        {
+            if (id != ingredient.Id)
+            {
+                return BadRequest("Invalid ingredient id");
+            }
+
+            var validationError = ValidateIngredient(ingredient);
+            if (!String.IsNullOrEmpty(validationError))
+            {
+                return BadRequest(validationError);
+            }
+
+            _ingredientsDBRepository.Update(ingredient);
+
+            return NoContent();
+
+        }
+
+        public string ValidateIngredient(IngredientsDB ingredient)
+        {
+            if (ingredient.PantryShelfLife <= -1 && ingredient.FridgeShelfLife <= -1 && ingredient.FreezerShelfLife <= -1)
+            {
+                return "Cannot add ingredient to database without an expiration date in at least one storage location.";
+            }
+            if (ingredient.CategoryId < 1 || ingredient.CategoryId > 3)
+            {
+                return "Cannot add ingredient to database without a valid category.";
+            }
+            if (ingredient.Quantity < 0)
+            {
+                return "Ingredient quantity cannot be negative.";
+            }
+
+            return "";
         }
     }
 }
