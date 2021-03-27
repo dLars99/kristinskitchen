@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using KristinsKitchen.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GearPatch.Utils;
 
 namespace KristinsKitchen.Repositories
@@ -64,6 +61,9 @@ namespace KristinsKitchen.Repositories
             }
         }
 
+        /// <summary>
+        /// Method which retrieves the full details for a single global ingredient
+        /// </summary>
         public IngredientsDB GetById(int id)
         {
             using (var conn = Connection)
@@ -91,7 +91,7 @@ namespace KristinsKitchen.Repositories
                     {
                         ingredient = new IngredientsDB()
                         {
-                            Id = DbUtils.GetInt(reader, "IngredientsId"),
+                            Id = id,
                             Description = DbUtils.GetString(reader, "IngredientsDescription"),
                             Brand = DbUtils.GetString(reader, "Brand"),
                             Variety = DbUtils.GetString(reader, "Variety"),
@@ -116,6 +116,9 @@ namespace KristinsKitchen.Repositories
             }
         }
 
+        /// <summary>
+        /// Method which adds a new ingredient to the global database
+        /// </summary>
         public void Add(IngredientsDB ingredient)
         {
             using (var conn = Connection)
@@ -148,6 +151,9 @@ namespace KristinsKitchen.Repositories
             }
         }
 
+        /// <summary>
+        /// Method which updates the details of an ingredient in the global database
+        /// </summary>
         public void Update(IngredientsDB ingredient)
         {
             using (var conn = Connection)

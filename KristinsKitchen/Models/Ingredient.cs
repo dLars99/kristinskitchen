@@ -8,6 +8,7 @@ namespace KristinsKitchen.Models
 {
     public class Ingredient
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public int IngredientsDBId { get; set; }
@@ -20,7 +21,7 @@ namespace KristinsKitchen.Models
         [MaxLength(255)]
         public DateTime PurchaseDate { get; set; }
         [Required]
-        private DateTime ExpirationDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         [Required]
         public int LocationId { get; set; }
         public Location Location { get; set; }
@@ -29,7 +30,7 @@ namespace KristinsKitchen.Models
         public Ingredient ()
         {
             OwnQuantity = IngredientsDB.Quantity;
-            OwnQuantityUnit = IngredientsDB.QuantityUnit;            
+            OwnQuantityUnit = IngredientsDB.QuantityUnit;      
         }
     }
 }
