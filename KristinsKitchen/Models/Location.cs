@@ -4,7 +4,7 @@ namespace KristinsKitchen.Models
 {
     public class Location
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(12)]
         public string LocationName { get; set; }

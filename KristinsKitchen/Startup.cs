@@ -30,6 +30,9 @@ namespace KristinsKitchen
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
             services.AddTransient<IIngredientsDBRepository, IngredientsDBRepository>();
+            services.AddTransient<IIngredientRepository, IngredientRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
 
         }
 
