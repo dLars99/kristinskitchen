@@ -100,5 +100,25 @@ namespace KristinsKitchen.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var ingredient = _ingredientRepository.GetById(id);
+            if (ingredient == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                _ingredientRepository.Delete(id);
+            }
+            catch
+            {
+                return StatusCode(500, "There was a problem deleting this ingredient.");
+            }
+
+            return NoContent();
+        }
     }
 }
