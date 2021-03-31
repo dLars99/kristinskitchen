@@ -28,6 +28,7 @@ namespace KristinsKitchen.Models
         public int FridgeShelfLife { get; set; }
         [Required]
         public int FreezerShelfLife { get; set; }
+        [Url]
         [MaxLength(255)]
         public string ImageLocation { get; set; }
     }

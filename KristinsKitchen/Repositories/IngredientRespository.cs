@@ -171,7 +171,7 @@ namespace KristinsKitchen.Repositories
                  OUTPUT INSERTED.ID
                              VALUES (@IngredientsDBId, @OwnQuantity, @OwnQuantityUnit, @PurchaseDate, @ExpirationDate,
                                      @LocationId, @UserProfileId);";
-                    DbUtils.AddParameter(cmd, "@Description", ingredient.IngredientsDBId);
+                    DbUtils.AddParameter(cmd, "@IngredientsDBId", ingredient.IngredientsDBId);
                     DbUtils.AddParameter(cmd, "@OwnQuantity", ingredient.OwnQuantity);
                     DbUtils.AddParameter(cmd, "@OwnQuantityUnit", ingredient.OwnQuantityUnit);
                     DbUtils.AddParameter(cmd, "@PurchaseDate", ingredient.PurchaseDate);
