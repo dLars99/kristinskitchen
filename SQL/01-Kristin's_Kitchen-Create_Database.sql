@@ -22,9 +22,10 @@ DROP TABLE IF EXISTS [UserProfile];
 
 CREATE TABLE [UserProfile] (
   [Id] integer PRIMARY KEY IDENTITY,
-  [userName] nvarchar(255) NOT NULL,
+  [UserName] nvarchar(255) NOT NULL,
   [Email] nvarchar(255) NOT NULL,
   [ImageLocation] nvarchar(255),
+  [IsActive] bit NOT NULL,
   [FirebaseId] nvarchar(28) NOT NULL,
 
   CONSTRAINT UQ_FirebaseId UNIQUE(FirebaseId)

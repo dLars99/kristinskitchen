@@ -42,3 +42,8 @@ insert into IngredientsDB (Id, Description, Brand, Variety, CategoryId, Quantity
 insert into IngredientsDB (Id, Description, Brand, Variety, CategoryId, Quantity, QuantityUnit, ContainerType, PantryShelfLife, FridgeShelfLife, FreezerShelfLife, ImageLocation) values (19, 'Rice', 'Three Elephants', 'jasmine', 9, 20, 'lb', 'bag', 730, -1, -1, null);
 insert into IngredientsDB (Id, Description, Brand, Variety, CategoryId, Quantity, QuantityUnit, ContainerType, PantryShelfLife, FridgeShelfLife, FreezerShelfLife, ImageLocation) values (20, 'Coffee, ground', 'Gevalia', 'Espresso roast', 10, 12, 'oz', 'bag', 150, 150, 730, null);
 set identity_insert [IngredientsDB] off
+
+set identity_insert [UserProfile] on
+insert into UserProfile (Id, UserName, Email, ImageLocation, IsActive, FirebaseId) values (1, 'IAmGroot', 'groot@groot.com', null, 1, 'abcdefghijklmnopqrstuvwxyz12');
+insert into UserProfile (Id, UserName, Email, ImageLocation, IsActive, FirebaseId) values (2, 'SloppySeconds', 'pointless@user.com', null, 1, 'zyxwvutsrqponmlkjihgfedcba21');
+set identity_insert [UserProfile] off

@@ -24,7 +24,7 @@ namespace KristinsKitchen.Utils
             return "";
         }
 
-        public static string ValidateUserIngredient(Ingredient ingredient, IngredientsDB ingredientsDB, Location location)
+        public static string ValidateUserIngredient(Ingredient ingredient, IngredientsDB ingredientsDB, Location location, UserProfile userProfile)
         {
             if (ingredientsDB == null)
             {
@@ -34,7 +34,10 @@ namespace KristinsKitchen.Utils
             {
                 return "Invalid location.";
             }
-            // TO DO: Validate UserProfileId
+            if (userProfile == null || !userProfile.IsActive)
+            {
+                return "Invalid user";
+            }    
             return "";
         }
 

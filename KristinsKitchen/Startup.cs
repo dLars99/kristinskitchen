@@ -33,6 +33,7 @@ namespace KristinsKitchen
             services.AddTransient<IIngredientRepository, IngredientRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ILocationRepository, LocationRepository>();
+            services.AddTransient<IUserProfileRepository, UserProfileRepository>();
 
         }
 
