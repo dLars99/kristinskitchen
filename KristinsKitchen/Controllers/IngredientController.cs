@@ -1,12 +1,8 @@
 ﻿using KristinsKitchen.Models;
 using KristinsKitchen.Repositories;
 using KristinsKitchen.Utils;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KristinsKitchen.Controllers
 {
@@ -17,21 +13,28 @@ namespace KristinsKitchen.Controllers
         private readonly IIngredientRepository _ingredientRepository;
         private readonly IIngredientsDBRepository _ingredientsDBRepository;
         private readonly ILocationRepository _locationRepository;
+        private readonly IUserProfileRepository _userProfileRepository;
 
         public IngredientController(IIngredientRepository ingredientRepository,
                                     IIngredientsDBRepository ingredientsDBRepository,
-                                    ILocationRepository locationRepository)
+                                    ILocationRepository locationRepository,
+                                    IUserProfileRepository userProfileRepository)
         {
             _ingredientRepository = ingredientRepository;
             _ingredientsDBRepository = ingredientsDBRepository;
             _locationRepository = locationRepository;
+            _userProfileRepository = userProfileRepository;
         }
 
         [HttpGet]
-        public IActionResult GetByUser(int user)
+        public IActionResult GetByUser(int userId)
         {
-            // TO DO: Error check for bad user ID
-            return Ok(_ingredientRepository.GetAllByUser(user));
+            var userProfile = _userProfileRepository.GetById(userId);
+            if (userProfile == null || !userProfile.IsActive)
+            {
+                return BadRequest("Invalid user Id");
+            }
+            return Ok(_ingredientRepository.GetAllByUser(userId));
         }
 
         [HttpGet("{id}")]
@@ -50,7 +53,8 @@ namespace KristinsKitchen.Controllers
         {
             var ingredientsDB = _ingredientsDBRepository.GetById(ingredient.IngredientsDBId);
             var location = _locationRepository.GetById(ingredient.LocationId);
-            var validationError = Validations.ValidateUserIngredient(ingredient, ingredientsDB, location);
+            var userProfile = _userProfileRepository.GetById(ingredient.UserProfileId);
+            var validationError = Validations.ValidateUserIngredient(ingredient, ingredientsDB, location, userProfile);
             if (!String.IsNullOrEmpty(validationError))
             {
                 return BadRequest(validationError);
@@ -76,10 +80,9 @@ namespace KristinsKitchen.Controllers
             }
 
             var ingredientsDB = _ingredientsDBRepository.GetById(ingredient.IngredientsDBId);
-
-
             var location = _locationRepository.GetById(ingredient.LocationId);
-            var validationError = Validations.ValidateUserIngredient(ingredient, ingredientsDB, location);
+            var userProfile = _userProfileRepository.GetById(ingredient.UserProfileId);
+            var validationError = Validations.ValidateUserIngredient(ingredient, ingredientsDB, location, userProfile);
             if (!String.IsNullOrEmpty(validationError))
             {
                 return BadRequest(validationError);

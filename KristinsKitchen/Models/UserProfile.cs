@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace KristinsKitchen.Models
 {
@@ -15,7 +16,7 @@ namespace KristinsKitchen.Models
         [Url]
         [MaxLength(255)]
         public string ImageLocation { get; set; }
-        [Required]
+        [JsonIgnore]
         public bool IsActive{ get; set; }
         public UserProfile()
         {
