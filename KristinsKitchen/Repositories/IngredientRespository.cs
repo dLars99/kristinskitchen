@@ -233,7 +233,7 @@ namespace KristinsKitchen.Repositories
 
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Ingredient Id=@Id;";
+                    cmd.CommandText = "DELETE FROM Ingredient WHERE Id=@Id;";
                     DbUtils.AddParameter(cmd, "@Id", id);
 
                     cmd.ExecuteNonQuery();
