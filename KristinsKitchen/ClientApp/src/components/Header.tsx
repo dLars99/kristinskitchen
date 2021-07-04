@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        height: "12vh",
     },
     menuButton: {
         marginRight: theme.spacing(2),
