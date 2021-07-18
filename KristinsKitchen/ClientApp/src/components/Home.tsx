@@ -82,7 +82,7 @@ const Home = () => {
                 <Grid item xs={6} className={classes.firstRow}>
                     <div className={classes.homeButton} style={{ backgroundImage: `url(${homeImages.pantry})` }}>
                         <div className={classes.homeButtonOverlay}>
-                            <Typography variant={"h5"}>My Pantry</Typography>
+                            <Typography variant={"h5"}>My Pantry (Coming Soon)</Typography>
                             <div className={classes.addButton}>
                                 <IconButton className={classes.addButtonIcon}>
                                     <AddIcon />
@@ -94,7 +94,7 @@ const Home = () => {
                 <Grid item xs={6} className={classes.firstRow}>
                     <div className={classes.homeButton} style={{ backgroundImage: `url(${homeImages.recipes})` }}>
                         <div className={classes.homeButtonOverlay}>
-                            <Typography variant={"h5"}>Recipes</Typography>
+                            <Typography variant={"h5"}>Recipes (Coming Soon)</Typography>
                             <div className={classes.addButton}>
                                 <IconButton className={classes.addButtonIcon}>
                                     <AddIcon />
@@ -106,7 +106,7 @@ const Home = () => {
                 <Grid item xs={6} className={classes.secondRow}>
                     <div className={classes.homeButton} style={{ backgroundImage: `url(${homeImages.groceryList})` }}>
                         <div className={classes.homeButtonOverlay}>
-                            <Typography variant={"h5"}>Grocery List</Typography>
+                            <Typography variant={"h5"}>Grocery List (Coming Soon)</Typography>
                             <div className={classes.addButton}>
                                 <IconButton className={classes.addButtonIcon}>
                                     <AddIcon />
@@ -118,7 +118,7 @@ const Home = () => {
                 <Grid item xs={6} className={classes.secondRow}>
                     <div className={classes.homeButton} style={{ backgroundImage: `url(${homeImages.mealPlan})` }}>
                         <div className={classes.homeButtonOverlay}>
-                            <Typography variant={"h5"}>Meal Plan</Typography>
+                            <Typography variant={"h5"}>Meal Plan (Coming Soon)</Typography>
                             <div className={classes.addButton}>
                                 <IconButton className={classes.addButtonIcon}>
                                     <AddIcon />
