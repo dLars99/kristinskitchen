@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "20px auto",
     },
     homeButtonGrid: {
-        marginTop: "5vh",
+        marginTop: "3vh",
         height: "50vh",
     },
     firstRow: {
@@ -78,7 +78,7 @@ const Home = () => {
             <Grid item xs={12}>
                 <TodaysMenu />
             </Grid>
-            <Grid container spacing={5} className={classes.homeButtonGrid}>
+            <Grid container spacing={4} className={classes.homeButtonGrid}>
                 <Grid item xs={6} className={classes.firstRow}>
                     <div className={classes.homeButton} style={{ backgroundImage: `url(${homeImages.pantry})` }}>
                         <div className={classes.homeButtonOverlay}>

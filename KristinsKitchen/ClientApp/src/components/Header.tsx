@@ -30,9 +30,9 @@ const Header = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" color="secondary">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>Kristin's Kitchen</Typography>
+                    <Typography variant="h4" className={classes.title}>Kristin's Kitchen</Typography>
                     <div>
                         <IconButton
                             aria-label="account of current user"
@@ -40,8 +40,9 @@ const Header = () => {
                             aria-haspopup="true"
                             onClick={handleMenu}
                             color="inherit"
+                            size={"medium"}
                         >
-                            <AccountCircle />
+                            <AccountCircle style={{ fontSize: 50 }} />
                         </IconButton>
                     </div>
                 </Toolbar>
